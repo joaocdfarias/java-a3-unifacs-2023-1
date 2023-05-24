@@ -1,5 +1,5 @@
 package com.unifacs.entities;
 
-public class Professor {
+public class Professor extends Person {
 
 }
