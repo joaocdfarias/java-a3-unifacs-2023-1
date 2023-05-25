@@ -1,51 +1,59 @@
-package entidades;
+package com.unifacs.entidades;
 
 public class Professor extends Pessoa {
 
-    private String Departamento;
-    private Integer Horas_trab;
-    private Float Salario;
-    private Double RA;
+    private String departamento;
+    private Integer horasTrab;
+    private Float salario;
+    private String ra;
+    private String curso;
 
 
     public Professor() {
         super();
     }
 
-    public Professor(String nome, String cpf, String Departamento, Integer Horas_trab, Float Salario, Double RA) {
+    public Professor(String nome, String cpf, String departamento, Integer horasTrab, Float salario, String ra, String curso) {
         super(nome, cpf);
-        this.RA = RA;
-        this.Departamento = Departamento;
-        this.Horas_trab = Horas_trab;
-        this.Salario = Salario;
+        this.ra = ra;
+        this.departamento = departamento;
+        this.horasTrab = horasTrab;
+        this.salario = salario;
+        this.curso = curso;
 
     }
 
     public String getDepartamento() {
-        return Departamento;
+        return departamento;
     }
 
     public void setDepartamento(String departamento) {
-        Departamento = departamento;
+        this.departamento = departamento;
     }
 
-    public Integer getHoras_trab() {
-        return Horas_trab;
+    public Integer getHorasTrab() {
+        return horasTrab;
     }
 
-    public void setHoras_trab(Integer horas_trab) {
-        Horas_trab = horas_trab;
+    public void setHorasTrab(Integer horasTrab) {
+        this.horasTrab = horasTrab;
     }
 
     public Float getSalario() {
-        return Salario;
+        return salario;
     }
 
     public void setSalario(Float salario) {
-        Salario = salario;
+        this.salario = salario;
     }
 
     public String toString() {
-        return super.getNome() + "Departamento: " + Departamento + "Salario: R$" + Salario;
+        return super.getNome() + "Departamento: " +departamento +"Salario: R$" + salario + "Curso: " + curso;
     }
+
+    public String darAumento(Float Aumento) {
+        return "O novo salario é :" + getSalario() + Aumento;
+
+    }
+
 }

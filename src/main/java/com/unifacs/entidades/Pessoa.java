@@ -1,4 +1,4 @@
-package entidades;
+package com.unifacs.entidades;
 
 public abstract class Pessoa {
     private String nome;
