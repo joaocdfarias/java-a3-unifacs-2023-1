@@ -23,6 +23,22 @@ public class Professor extends Pessoa {
 
     }
 
+    public String getRa() {
+        return ra;
+    }
+
+    public void setRa(String ra) {
+        this.ra = ra;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
     public String getDepartamento() {
         return departamento;
     }
@@ -48,11 +64,11 @@ public class Professor extends Pessoa {
     }
 
     public String toString() {
-        return super.getNome() + "Departamento: " +departamento +"Salario: R$" + salario + "Curso: " + curso;
+        return "Nome:" + super.getNome() + " Departamento: " + departamento + " Curso: " + curso + "Salario R$:" + salario;
     }
 
-    public String darAumento(Float Aumento) {
-        return "O novo salario é :" + getSalario() + Aumento;
+    public String darAumento(Float aumento) {
+        return "O novo salario é :" + getSalario() + aumento;
 
     }
 
