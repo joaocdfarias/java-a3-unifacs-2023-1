@@ -9,8 +9,5 @@
         <module name="trabalho-a3" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="trabalho-a3" target="1.7" />
-    </bytecodeTargetLevel>
   </component>
 </project>
