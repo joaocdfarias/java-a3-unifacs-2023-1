@@ -8,7 +8,6 @@ public class Professor extends Pessoa {
     private String ra;
     private String curso;
 
-
     public Professor() {
         super();
     }
@@ -25,10 +24,6 @@ public class Professor extends Pessoa {
 
     public String getRa() {
         return ra;
-    }
-
-    public void setRa(String ra) {
-        this.ra = ra;
     }
 
     public String getCurso() {
@@ -63,12 +58,15 @@ public class Professor extends Pessoa {
         this.salario = salario;
     }
 
+    //Metodo que retorna uma String sobre os 3 atributos
     public String toString() {
-        return "Nome:" + super.getNome() + " Departamento: " + departamento + " Curso: " + curso + "Salario R$:" + salario;
+        return "Nome:" + super.getNome() + " Departamento: " + departamento + " Curso: " + curso + "Salario R$:"
+                + salario;
     }
 
+    //Metodo que retorna o aumento do salario conforme uma porcentagem
     public String darAumento(Float aumento) {
-        return "O novo salario é :" + getSalario() + aumento;
+        return "O novo salario é :" + getSalario() * (aumento / 100);
 
     }
 
