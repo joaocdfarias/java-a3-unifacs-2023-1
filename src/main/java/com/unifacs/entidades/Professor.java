@@ -3,17 +3,17 @@ package com.unifacs.entidades;
 public class Professor extends Pessoa {
 
     private String departamento;
-    private Integer horasTrab;
-    private Float salario;
+    private int horasTrab;
+    private double salario;
     private String ra;
     private String curso;
-
 
     public Professor() {
         super();
     }
 
-    public Professor(String nome, String cpf, String departamento, Integer horasTrab, Float salario, String ra, String curso) {
+    public Professor(String nome, String cpf, String departamento, int horasTrab, double salario, String ra,
+            String curso) {
         super(nome, cpf);
         this.ra = ra;
         this.departamento = departamento;
@@ -47,7 +47,7 @@ public class Professor extends Pessoa {
         this.departamento = departamento;
     }
 
-    public Integer getHorasTrab() {
+    public int getHorasTrab() {
         return horasTrab;
     }
 
@@ -55,19 +55,20 @@ public class Professor extends Pessoa {
         this.horasTrab = horasTrab;
     }
 
-    public Float getSalario() {
+    public double getSalario() {
         return salario;
     }
 
-    public void setSalario(Float salario) {
+    public void setSalario(double salario) {
         this.salario = salario;
     }
 
     public String toString() {
-        return "Nome:" + super.getNome() + " Departamento: " + departamento + " Curso: " + curso + "Salario R$:" + salario;
+        return "Nome:" + super.getNome() + " Departamento: " + departamento + " Curso: " + curso + "Salario R$:"
+                + salario;
     }
 
-    public String darAumento(Float aumento) {
+    public String darAumento(double aumento) {
         return "O novo salario é :" + getSalario() + aumento;
 
     }
