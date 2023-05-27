@@ -1,10 +1,10 @@
 package com.unifacs.entidades;
 
-public class Professor extends Pessoa {
+public class Professor extends Pessoa{
 
     private String departamento;
     private Integer horasTrab;
-    private Float salario;
+    private Double salario;
     private String ra;
     private String curso;
 
@@ -12,7 +12,7 @@ public class Professor extends Pessoa {
         super();
     }
 
-    public Professor(String nome, String cpf, String departamento, Integer horasTrab, Float salario, String ra, String curso) {
+    public Professor(String nome, String cpf, String departamento, Integer horasTrab, Double salario, String ra, String curso) {
         super(nome, cpf);
         this.ra = ra;
         this.departamento = departamento;
@@ -50,24 +50,25 @@ public class Professor extends Pessoa {
         this.horasTrab = horasTrab;
     }
 
-    public Float getSalario() {
+    public Double getSalario() {
         return salario;
     }
 
-    public void setSalario(Float salario) {
+    public void setSalario(Double salario) {
         this.salario = salario;
     }
 
     //Metodo que retorna uma String sobre os 3 atributos
     public String toString() {
-        return "Nome:" + super.getNome() + " Departamento: " + departamento + " Curso: " + curso + "Salario R$:"
-                + salario;
+        return "Nome:" + super.getNome() + " Departamento: " + departamento + " Curso: " + curso + " Salario R$: "
+                + String.format("%.2f", salario);
     }
 
     //Metodo que retorna o aumento do salario conforme uma porcentagem
-    public String darAumento(Float aumento) {
-        return "O novo salario é :" + getSalario() * (aumento / 100);
+    public void darAumento(Float aumento) {
+        salario = getSalario() * (1+(aumento/100));
 
     }
 
+    
 }
