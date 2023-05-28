@@ -13,11 +13,21 @@ public class Programa {
     public static ArrayList<Aluno> alunos = new ArrayList<>();
 
     public static void main(String[] args) {
-        Professor professor = new Professor("Joao", "123", "ti", 24, 24000, "123", "CC");
+        Professor professor = new Professor("Joao", "123", "ti", 24, 4000, "123", "CC");
+        Professor professor2 = new Professor("Carlos", "321", "humanas", 44, 8000, "321", "Geografia");
+        Professor professor3 = new Professor("Hanspeter", "456", "exatas", 34, 10000, "456", "Matemática");
         professores.add(professor);
+        professores.add(professor2);
+        professores.add(professor3);
 
-        Aluno aluno = new Aluno("Carlos", "123456", "Noturno", "123456789", "CC");
+        Aluno aluno = new Aluno("João", "123456", "Noturno", "73812721100", "CC");
+        Aluno aluno2 = new Aluno("Junior", "654321", "Diurno", "987654321342", "Geografia");
+        Aluno aluno3 = new Aluno("Gabriel", "987654", "Noturno", "7893012543", "Matemática");
+        Aluno aluno4 = new Aluno("Vinícius", "567890", "Diurno", "123456789532", "CC");
         alunos.add(aluno);
+        alunos.add(aluno2);
+        alunos.add(aluno3);
+        alunos.add(aluno4);
 
         String opcaoSelecionada;
 
