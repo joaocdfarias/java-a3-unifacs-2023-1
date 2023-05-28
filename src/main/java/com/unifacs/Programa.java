@@ -307,7 +307,7 @@ public class Programa {
     // apagar e caso dê certo, irá exigir o texto
     // "O professor com o RA x foi apagado!"
     public static void apagarProfessor() {
-        int tamanhoAntes, tamanhoDepois;
+        int tamanhoAntes = 0, tamanhoDepois = 0;
 
         if (professores.isEmpty()) {
             System.out.println("Nenhum cadastro encontrado.");
@@ -320,29 +320,38 @@ public class Programa {
             System.out.print("Digite o RA do professor que deseja apagar: ");
             String ra = scanner.next();
 
-            // Variável tamanho antes para verificar o tamanho da array de professores
-            // antes de remover o professor
-            tamanhoAntes = professores.size();
+            System.out.printf("Deseja mesmo excluir o professor com o RA %s ? ", ra);
+            String confirmarExclusao = scanner.next();
 
-            // Expressão lambda responsável por percorrer a array de professores
-            // e remover o professor da array caso a condição seja satisfeita
-            // a condição neste caso é encontrar um professor na array de professores
-            // com o mesmo RA passado pelo usuário no terminal
-            professores.removeIf(professor -> (professor.getRa().equals(ra)));
-            tamanhoDepois = professores.size();
+            if (confirmarExclusao.toLowerCase().equals("sim")) {
+                // Variável tamanho antes para verificar o tamanho da array de professores
+                // antes de remover o professor
+                tamanhoAntes = professores.size();
 
-            // Se o tamanhoAntes for maior que o tamanhoDepois exibirá o texto
-            // "O professor com RA x foi apagado!", isso garante que o texto
-            // não seja exibido se não encontrar nenhum professor.
-            if (tamanhoDepois < tamanhoAntes) {
-                System.out.printf("O professor com RA %s foi apagado!", ra);
-                System.out.println(" ");
-                System.out.println("--------------------------------");
-                listarProfessores();
+                // Expressão lambda responsável por percorrer a array de professores
+                // e remover o professor da array caso a condição seja satisfeita
+                // a condição neste caso é encontrar um professor na array de professores
+                // com o mesmo RA passado pelo usuário no terminal
+                professores.removeIf(professor -> (professor.getRa().equals(ra)));
+                tamanhoDepois = professores.size();
+
+                // Se o tamanhoAntes for maior que o tamanhoDepois exibirá o texto
+                // "O professor com RA x foi apagado!", isso garante que o texto
+                // não seja exibido se não encontrar nenhum professor.
+                if (tamanhoDepois < tamanhoAntes) {
+                    System.out.printf("O professor com RA %s foi apagado!", ra);
+                    System.out.println(" ");
+                    System.out.println("--------------------------------");
+                    listarProfessores();
+                } else {
+                    System.out.printf("Professor com RA %s não encontrado!", ra);
+                    System.out.println(" ");
+                    System.out.println("--------------------------------");
+                }
             } else {
-                System.out.printf("Professor com RA %s não encontrado!", ra);
+                System.out.printf("Professor com RA %s não foi apagado!", ra);
                 System.out.println(" ");
-                System.out.println("--------------------------------");
+                return;
             }
         } while (!(tamanhoDepois < tamanhoAntes));
 
@@ -351,7 +360,7 @@ public class Programa {
     // Mesmo caso que a função anterior, porém irá apagar alunos
     // da array de alunos
     public static void apagarAluno() {
-        int tamanhoAntes, tamanhoDepois;
+        int tamanhoAntes = 0, tamanhoDepois = 0;
 
         if (alunos.isEmpty()) {
             System.out.println("Nenhum cadastro encontrado.");
@@ -361,19 +370,29 @@ public class Programa {
         do {
             System.out.print("Digite o RA do aluno que deseja apagar: ");
             String ra = scanner.next();
-            tamanhoAntes = alunos.size();
-            alunos.removeIf(aluno -> (aluno.getRa().equals(ra)));
-            tamanhoDepois = alunos.size();
 
-            if (tamanhoDepois < tamanhoAntes) {
-                System.out.printf("O aluno com RA %s foi apagado!", ra);
-                System.out.println(" ");
-                System.out.println("--------------------------------");
-                listarAlunos();
+            System.out.printf("Deseja mesmo excluir o aluno com o RA %s ? ", ra);
+            String confirmarExclusao = scanner.next();
+
+            if (confirmarExclusao.toLowerCase().equals("sim")) {
+                tamanhoAntes = alunos.size();
+                alunos.removeIf(aluno -> (aluno.getRa().equals(ra)));
+                tamanhoDepois = alunos.size();
+
+                if (tamanhoDepois < tamanhoAntes) {
+                    System.out.printf("O aluno com RA %s foi apagado!", ra);
+                    System.out.println(" ");
+                    System.out.println("--------------------------------");
+                    listarAlunos();
+                } else {
+                    System.out.printf("Aluno com RA %s não encontrado!", ra);
+                    System.out.println(" ");
+                    System.out.println("--------------------------------");
+                }
             } else {
-                System.out.printf("Aluno com RA %s não encontrado!", ra);
+                System.out.printf("Aluno com RA %s não foi apagado!", ra);
                 System.out.println(" ");
-                System.out.println("--------------------------------");
+                return;
             }
         } while (!(tamanhoDepois < tamanhoAntes));
 
