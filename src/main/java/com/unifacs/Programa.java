@@ -43,6 +43,7 @@ public class Programa {
             System.out.println("--------------------------------");
             System.out.print("Digite aqui: ");
             opcaoSelecionada = scanner.nextLine();
+            System.out.println("--------------------------------");
 
             switch (opcaoSelecionada.toLowerCase()) {
                 case "professor":
@@ -80,11 +81,12 @@ public class Programa {
             System.out.println("- Cadastrar");
             System.out.println("- Editar");
             System.out.println("- Buscar");
-            System.out.println("- Ler");
+            System.out.println("- Listar");
             System.out.println("- Apagar");
             System.out.println("- Voltar");
             System.out.print("Digite aqui: ");
             opcao = scanner.next();
+            System.out.println("--------------------------------");
 
             switch (opcao.toLowerCase()) {
                 case "cadastrar":
@@ -94,11 +96,11 @@ public class Programa {
                         criarAluno();
                     }
                     break;
-                case "ler":
+                case "listar":
                     if (tipo == "professor") {
-                        lerProfessor();
+                        listarProfessores();
                     } else {
-                        lerAluno();
+                        listarAlunos();
                     }
                     break;
                 case "apagar":
@@ -191,8 +193,8 @@ public class Programa {
 
     }
 
-    public static void lerProfessor() {
-        System.out.println("| Nome | Curso | Salário |");
+    public static void listarProfessores() {
+        System.out.println("| Nome | Curso | RA |");
 
         if (professores.isEmpty()) {
             System.out.println("Nenhum cadastro encontrado.");
@@ -200,20 +202,19 @@ public class Programa {
         }
 
         for (Professor professor : professores) {
-            String nome, curso;
-            double salario;
+            String nome, curso, ra;
 
             nome = professor.getNome();
             curso = professor.getCurso();
-            salario = professor.getSalario();
+            ra = professor.getRa();
 
-            System.out.printf("| %s | %s | R$ %.2f |", nome, curso, salario);
+            System.out.printf("| %s | %s | %s |", nome, curso, ra);
             System.out.println();
         }
     }
 
-    public static void lerAluno() {
-        System.out.println("| Nome | Curso | Período |");
+    public static void listarAlunos() {
+        System.out.println("| Nome | Curso | RA |");
 
         if (alunos.isEmpty()) {
             System.out.println("Nenhum cadastro encontrado.");
@@ -221,18 +222,19 @@ public class Programa {
         }
 
         for (Aluno aluno : alunos) {
-            String nome, curso, periodo;
+            String nome, curso, ra;
 
             nome = aluno.getNome();
             curso = aluno.getCurso();
-            periodo = aluno.getPeriodo();
+            ra = aluno.getRa();
 
-            System.out.printf("| %s | %s | %s |", nome, curso, periodo);
+            System.out.printf("| %s | %s | %s |", nome, curso, ra);
             System.out.println();
         }
     }
 
     public static void apagarProfessor() {
+
         if (professores.isEmpty()) {
             System.out.println("Nenhum cadastro encontrado.");
             return;
@@ -242,7 +244,9 @@ public class Programa {
         String ra = scanner.next();
         professores.removeIf(professor -> (professor.getRa().equals(ra)));
         System.out.printf("O professor com RA %s foi apagado!", ra);
+        System.out.println(" ");
         System.out.println("--------------------------------");
+        listarProfessores();
     }
 
     public static void apagarAluno() {
@@ -253,9 +257,11 @@ public class Programa {
 
         System.out.print("Digite o RA do aluno que deseja apagar: ");
         String ra = scanner.next();
-        professores.removeIf(aluno -> (aluno.getRa().equals(ra)));
+        alunos.removeIf(aluno -> (aluno.getRa().equals(ra)));
         System.out.printf("O aluno com RA %s foi apagado!", ra);
+        System.out.println(" ");
         System.out.println("--------------------------------");
+        listarAlunos();
     }
 
     public static void buscarProfessor() {
@@ -268,16 +274,19 @@ public class Programa {
         String raInput = scanner.next();
 
         for (Professor professor : professores) {
-            String ra, curso;
+            String ra, curso, nome;
             double salario;
+            int horasTrabalhadas;
 
-            ra = professor.getNome();
+            nome = professor.getNome();
             curso = professor.getCurso();
             salario = professor.getSalario();
+            ra = professor.getRa();
+            horasTrabalhadas = professor.getHorasTrab();
 
             if (professor.getRa().equals(raInput)) {
-                System.out.println("| Nome | Curso | Salário |");
-                System.out.printf("| %s | %s | R$ %.2f |", ra, curso, salario);
+                System.out.println("| Nome | RA | Curso | Horas Trabalhadas | Salário |");
+                System.out.printf("| %s | %s | %s | %d | %.2f |", nome, ra, curso, horasTrabalhadas, salario);
                 System.out.println();
             } else {
                 System.out.println("Professor não encontrado.");
@@ -295,15 +304,17 @@ public class Programa {
         String raInput = scanner.next();
 
         for (Aluno aluno : alunos) {
-            String nome, curso, ra;
+            String nome, curso, ra, periodo, cpf;
 
             nome = aluno.getNome();
             curso = aluno.getCurso();
             ra = aluno.getRa();
+            periodo = aluno.getPeriodo();
+            cpf = aluno.getCpf();
 
             if (aluno.getRa().equals(raInput)) {
-                System.out.println("| Nome | Curso | RA |");
-                System.out.printf("| %s | %s | R$ %.2f |", nome, curso, ra);
+                System.out.println("| Nome | RA | Curso | Período | CPF |");
+                System.out.printf("| %s | %s | %s | %s | %s |", nome, ra, curso, periodo, cpf);
                 System.out.println();
             } else {
                 System.out.println("Aluno não encontrado.");
@@ -333,6 +344,7 @@ public class Programa {
                 System.out.println("- Salário");
                 System.out.print("Digite aqui: ");
                 editarPropriedade = scanner.next();
+                System.out.println("--------------------------------");
 
                 switch (editarPropriedade.toLowerCase()) {
                     case "curso":
@@ -389,6 +401,7 @@ public class Programa {
                 System.out.println("- Período");
                 System.out.print("Digite aqui: ");
                 editarPropriedade = scanner.next();
+                System.out.println("--------------------------------");
 
                 switch (editarPropriedade.toLowerCase()) {
                     case "curso":
