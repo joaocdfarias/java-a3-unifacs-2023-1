@@ -65,10 +65,4 @@ public class Professor extends Pessoa {
                 + String.format("%.2f", salario);
     }
 
-    // Metodo que retorna o aumento do salario conforme uma porcentagem
-    public void darAumento(Float aumento) {
-        salario = getSalario() * (1 + (aumento / 100));
-
-    }
-
 }
