@@ -138,35 +138,35 @@ public class Programa {
             // CRUD de professores, senão, as funções de CRUD de aluno serão executadas.
             switch (opcao.toLowerCase()) {
                 case "cadastrar":
-                    if (tipo == "professor") {
+                    if (tipo.equals("professor")) {
                         criarProfessor();
                     } else {
                         criarAluno();
                     }
                     break;
                 case "listar":
-                    if (tipo == "professor") {
+                    if (tipo.equals("professor")) {
                         listarProfessores();
                     } else {
                         listarAlunos();
                     }
                     break;
                 case "apagar":
-                    if (tipo == "professor") {
+                    if (tipo.equals("professor")) {
                         apagarProfessor();
                     } else {
                         apagarAluno();
                     }
                     break;
                 case "buscar":
-                    if (tipo == "professor") {
+                    if (tipo.equals("professor")) {
                         buscarProfessor();
                     } else {
                         buscarAluno();
                     }
                     break;
                 case "editar":
-                    if (tipo == "professor") {
+                    if (tipo.equals("professor")) {
                         editarProfessor();
                     } else {
                         editarAluno();
