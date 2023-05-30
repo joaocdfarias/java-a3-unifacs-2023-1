@@ -1,6 +1,8 @@
 package com.unifacs;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 import com.unifacs.entidades.Aluno;
@@ -122,6 +124,7 @@ public class Programa {
             System.out.println("- Editar");
             System.out.println("- Buscar");
             System.out.println("- Listar");
+            System.out.println("- Ordenar");
             System.out.println("- Apagar");
             System.out.println("- Voltar");
             System.out.print("Digite aqui: ");
@@ -164,6 +167,9 @@ public class Programa {
                     } else {
                         buscarAluno();
                     }
+                    break;
+                case "ordenar":
+                    ordernar(tipo);
                     break;
                 case "editar":
                     if (tipo.equals("professor")) {
@@ -661,6 +667,35 @@ public class Programa {
             System.out.println("Aperte 'Enter' para voltar ao menu anterior.");
             scanner.nextLine();
         }
+    }
+
+    public static void ordernar(String tipo){
+        if(tipo.equals("professor")){
+            // Ordenar a lista de professores por nome
+            Collections.sort(professores, new Comparator<Professor>() {
+                @Override
+                public int compare(Professor p1, Professor p2) {
+                    return p1.getNome().compareTo(p2.getNome());
+                }
+            });
+            System.out.println("Lista de professores ordenada!");
+            listarProfessores();
+            
+        }else{
+            // Ordenar a lista de alunos por nome
+            Collections.sort(alunos, new Comparator<Aluno>() {
+                @Override
+                public int compare(Aluno p1, Aluno p2) {
+                    return p1.getNome().compareTo(p2.getNome());
+                }
+            });
+            System.out.println("Lista de alunos ordenada!");
+            listarAlunos();
+        }
+
+        System.out.println("--------------------------------");
+        System.out.println("Aperte 'Enter' para voltar ao menu anterior.");
+        scanner.nextLine();
     }
 
     public static void clearScreen() {
