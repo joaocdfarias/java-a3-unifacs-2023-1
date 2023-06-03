@@ -1,6 +1,7 @@
 package com.unifacs.entidades;
 
-public class Aluno extends Pessoa {
+//Implementação da interface Comparable para obter o metodo compareTo
+public class Aluno extends Pessoa implements Comparable<Aluno> {
     private String curso;
     private String ra;
     private String periodo;
@@ -14,6 +15,12 @@ public class Aluno extends Pessoa {
         this.periodo = periodo;
         this.ra = ra;
         this.curso = curso;
+    }
+
+    //Metodo que compara o nome de dois objetos para ordenar a lista de alunos por nome
+    @Override
+    public int compareTo(Aluno outroAluno) {
+        return super.getNome().compareTo(outroAluno.getNome());
     }
 
     // Metodo que que retorna uma String mostrando 3 atributos do aluno

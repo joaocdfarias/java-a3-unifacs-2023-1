@@ -2,7 +2,6 @@ package com.unifacs;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Scanner;
 
 import com.unifacs.entidades.Aluno;
@@ -297,6 +296,7 @@ public class Programa {
             System.out.printf("| %s | %s | %s |", nome, curso, ra);
             System.out.println();
         }
+            scanner.nextLine();
     }
 
     // Vai seguir o mesmo padrão de listarProfessores(), porém
@@ -321,6 +321,7 @@ public class Programa {
             System.out.printf("| %s | %s | %s |", nome, curso, ra);
             System.out.println();
         }
+            scanner.nextLine();
     }
 
     // Função responsável por apagar professor da array de professores
@@ -669,33 +670,19 @@ public class Programa {
         }
     }
 
-    public static void ordernar(String tipo){
-        if(tipo.equals("professor")){
+    public static void ordernar(String tipo) {
+        if(tipo.equals("professor")) {
             // Ordenar a lista de professores por nome
-            Collections.sort(professores, new Comparator<Professor>() {
-                @Override
-                public int compare(Professor p1, Professor p2) {
-                    return p1.getNome().compareTo(p2.getNome());
-                }
-            });
+            Collections.sort(professores);
             System.out.println("Lista de professores ordenada!");
             listarProfessores();
             
-        }else{
+        }else {
             // Ordenar a lista de alunos por nome
-            Collections.sort(alunos, new Comparator<Aluno>() {
-                @Override
-                public int compare(Aluno p1, Aluno p2) {
-                    return p1.getNome().compareTo(p2.getNome());
-                }
-            });
+            Collections.sort(alunos);
             System.out.println("Lista de alunos ordenada!");
             listarAlunos();
         }
-
-        System.out.println("--------------------------------");
-        System.out.println("Aperte 'Enter' para voltar ao menu anterior.");
-        scanner.nextLine();
     }
 
     public static void clearScreen() {
